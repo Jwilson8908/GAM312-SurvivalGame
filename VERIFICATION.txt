@@ -1,0 +1,25 @@
+Failures: 0
+PASS: Test actors and original Blueprint character load
+PASS: Original Wood and Stone integer properties exist
+PASS: Inventory starts empty
+PASS: Crafting without materials is rejected
+PASS: Resource additions update the shared inventory
+PASS: All three recipes consume exact total costs (95 wood, 50 stone)
+PASS: Each crafted item increments its own supply
+PASS: Insufficient stone never spends wood
+PASS: Selecting an item spawns a wall preview
+PASS: Preview has no collision
+PASS: Placed geometry enables collision
+PASS: Placed geometry blocks player pawns
+PASS: Wall dimensions are 20 x 400 x 300 cm
+PASS: Cancel removes preview without spending a supply
+PASS: Floor selection spawns a floor
+PASS: Ceiling selection spawns a ceiling
+PASS: Invalid item indexes are safely rejected
+PASS: Visibility trace produces a valid floor placement
+PASS: Confirming placement commits the actor and consumes one supply
+PASS: Committed floor blocks pawns
+PASS: Overlap validation rejects geometry embedded in its support
+PASS: Rejected placement preserves the crafted supply
+PASS: A trace with no surface rejects placement
+PASS: Ceiling preview clears the floor by one wall height

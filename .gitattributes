@@ -1,3 +1,14 @@
 # Store Unreal binary assets and maps using Git Large File Storage.
 *.uasset filter=lfs diff=lfs merge=lfs -text
 *.umap filter=lfs diff=lfs merge=lfs -text
+
+# Small Module Three assets are stored directly in Git.
+Content/Building/BP_BuildingPart.uasset -filter -diff -merge -text
+Content/Building/BP_Ceiling.uasset -filter -diff -merge -text
+Content/Building/BP_Floor.uasset -filter -diff -merge -text
+Content/Building/BP_Wall.uasset -filter -diff -merge -text
+Content/Building/BuildingPart_Mesh.uasset -filter -diff -merge -text
+Content/Maps/_GENERATED/jojo/Box_C2F1F45B.uasset -filter -diff -merge -text
+Content/Maps/smalltestmap.umap -filter -diff -merge -text
+Content/ModuleThree/M_Shelter.uasset -filter -diff -merge -text
+Content/Widgets/CraftingWidget.uasset -filter -diff -merge -text
