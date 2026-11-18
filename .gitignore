@@ -1,5 +1,6 @@
 # Unreal regenerates these build, cache, and local editor folders.
 Binaries/
+Build/
 DerivedDataCache/
 Intermediate/
 Saved/

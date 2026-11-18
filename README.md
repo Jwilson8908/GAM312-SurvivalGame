@@ -41,3 +41,15 @@ The editor target has been compiled using the installed Unreal Engine 5.8 toolch
 No screencast was recorded, as requested. Use `SCREENCAST_GUIDE.md` to record your own walkthrough. The assignment filename is `SteppingStoneThree_Wilson.mp4`; show the repository source and commits pages.
 
 The Git history includes the existing project and the Module Three implementation. The C++ source, Unreal assets, and verification report are available on the GitHub repository's main branch.
+
+## Stepping Stone Four: Player HUD and Wandering AI
+
+The native `UPlayerStatsWorldSubsystem` creates a 2D HUD in game and PIE sessions. It reads the local pawn's `Health`, `Hunger`, and `Stamina` Blueprint variables and updates three labeled progress bars. The existing character Blueprint remains responsible for changing those values. The widget uses a 0-100 range.
+
+`AWanderAICharacter` is a visible sample pawn with `AWanderAIController`, which repeatedly finds reachable navigation points and waits a random 1-3 seconds between moves. Add a **Nav Mesh Bounds Volume** over the walkable area, place a **WanderAICharacter** in it, then press Play.
+
+For the assignment's Blueprint visual scripting walkthrough, create a Blueprint child of `WanderAIController`, set **Start Wandering On Possess** to false, and add `Begin Play -> Delay (0.1) -> Start Wandering`. Assign that child as the AI Controller Class on a Blueprint child of `WanderAICharacter`. The controller exposes its wander radius and pause range in Details.
+
+HUD source: `PlayerStatsWidget.*` and `PlayerStatsWorldSubsystem.*`. AI source: `WanderAIController.*` and `WanderAICharacter.*`. Inline comments explain the stat lookup, widget layout, navigation retries, and timer loop. Build with Unreal Engine 5.8 before opening or placing the new C++ classes in the editor.
+
+The implementation files are on the repository's main branch. The required Blueprint setup, in-editor demonstration, and narrated screencast still need to be completed in Unreal Editor and OBS.
