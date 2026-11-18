@@ -15,7 +15,7 @@ namespace
 
 	UProgressBar* AddStatRow(UWidgetTree* WidgetTree, UVerticalBox* Parent,
 		const TCHAR* Name, const TCHAR* InitialText, const FLinearColor& FillColor,
-		UTextBlock*& OutLabel)
+		TObjectPtr<UTextBlock>& OutLabel)
 	{
 		UTextBlock* Label = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(),
 			FName(*FString::Printf(TEXT("%sLabel"), Name)));

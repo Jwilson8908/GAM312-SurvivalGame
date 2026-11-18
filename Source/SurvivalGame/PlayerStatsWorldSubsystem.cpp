@@ -25,7 +25,8 @@ namespace
 		// Blueprint stat variables may be floats or integers, so read either numeric type safely.
 		if (NumericProperty->IsFloatingPoint())
 		{
-			return static_cast<float>(NumericProperty->GetFloatingPointPropertyValue_InContainer(Object));
+			const void* ValueAddress = NumericProperty->ContainerPtrToValuePtr<void>(Object);
+			return static_cast<float>(NumericProperty->GetFloatingPointPropertyValue(ValueAddress));
 		}
 		return static_cast<float>(NumericProperty->GetSignedIntPropertyValue_InContainer(Object));
 	}

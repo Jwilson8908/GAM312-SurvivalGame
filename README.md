@@ -46,9 +46,11 @@ The Git history includes the existing project and the Module Three implementatio
 
 The native `UPlayerStatsWorldSubsystem` creates a 2D HUD in game and PIE sessions. It reads the local pawn's `Health`, `Hunger`, and `Stamina` Blueprint variables and updates three labeled progress bars. The existing character Blueprint remains responsible for changing those values. The widget uses a 0-100 range.
 
-`AWanderAICharacter` is a visible sample pawn with `AWanderAIController`, which repeatedly finds reachable navigation points and waits a random 1-3 seconds between moves. Add a **Nav Mesh Bounds Volume** over the walkable area, place a **WanderAICharacter** in it, then press Play.
+`AWanderAICharacter` is a visible sample pawn with `AWanderAIController`, which repeatedly finds reachable navigation points and waits a random 1-3 seconds between moves. The Unreal setup now includes `BP_WanderAIController` and `BP_WanderAICharacter` under `/Game/AI`. The character Blueprint uses the controller Blueprint, and both are saved in `/Game/Maps/smalltestmap` alongside an **AI Navigation Bounds** volume covering the floor. The controller starts wandering when it possesses the pawn; its wander radius and pause range are editable in the Blueprint defaults.
 
-For the assignment's Blueprint visual scripting walkthrough, create a Blueprint child of `WanderAIController`, set **Start Wandering On Possess** to false, and add `Begin Play -> Delay (0.1) -> Start Wandering`. Assign that child as the AI Controller Class on a Blueprint child of `WanderAICharacter`. The controller exposes its wander radius and pause range in Details.
+The HUD is created by `UPlayerStatsWorldSubsystem` during game/PIE play. The three progress bars read the existing `Health`, `Hunger`, and `Stamina` values from the player pawn.
+
+For a strict Blueprint-graph walkthrough, the assignment guide's `Begin Play -> Delay (0.1) -> Start Wandering` graph can still be added in the Unreal editor. The saved child controller already runs the same wandering loop through its native possess event, so the AI works without that duplicate graph.
 
 HUD source: `PlayerStatsWidget.*` and `PlayerStatsWorldSubsystem.*`. AI source: `WanderAIController.*` and `WanderAICharacter.*`. Inline comments explain the stat lookup, widget layout, navigation retries, and timer loop. Build with Unreal Engine 5.8 before opening or placing the new C++ classes in the editor.
 
