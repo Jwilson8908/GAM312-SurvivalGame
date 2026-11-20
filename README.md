@@ -50,8 +50,10 @@ The native `UPlayerStatsWorldSubsystem` creates a 2D HUD in game and PIE session
 
 The HUD is created by `UPlayerStatsWorldSubsystem` during game/PIE play. The three progress bars read the existing `Health`, `Hunger`, and `Stamina` values from the player pawn.
 
-For a strict Blueprint-graph walkthrough, the assignment guide's `Begin Play -> Delay (0.1) -> Start Wandering` graph can still be added in the Unreal editor. The saved child controller already runs the same wandering loop through its native possess event, so the AI works without that duplicate graph.
+The saved `BP_WanderAIController` EventGraph starts the wander loop with `Event BeginPlay -> Delay (0.1) -> StartWandering`. The short delay lets possession and navigation finish initializing before the first movement request. The native controller also starts on possess as a fallback, and repeated starts safely clear and reset the wander timer.
 
 HUD source: `PlayerStatsWidget.*` and `PlayerStatsWorldSubsystem.*`. AI source: `WanderAIController.*` and `WanderAICharacter.*`. Inline comments explain the stat lookup, widget layout, navigation retries, and timer loop. Build with Unreal Engine 5.8 before opening or placing the new C++ classes in the editor.
 
-The implementation files are on the repository's main branch. The required Blueprint setup, in-editor demonstration, and narrated screencast still need to be completed in Unreal Editor and OBS.
+The repository includes the HUD source, the AI controller and character source, the controller and character Blueprints, the test level, and the navigation data actor. Use Unreal Engine 5.8 to open `SurvivalGame.uproject`; open `/Game/Maps/smalltestmap` and press Play to demonstrate the HUD and wandering AI.
+
+See `STEPPING_STONE_FOUR_RECORDING_GUIDE.md` for a concise walkthrough outline. The recording itself is not included.
